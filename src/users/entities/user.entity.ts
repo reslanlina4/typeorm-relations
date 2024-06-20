@@ -1,10 +1,11 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+@Entity()
 export class User {
-    @ApiProperty()
-    id: Number;
-
-    @ApiProperty()
-    name:string
-
+    
+    @PrimaryGeneratedColumn()
+    id:number;
+    
+    @Column()
+    name: string
 }
