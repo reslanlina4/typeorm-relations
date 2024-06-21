@@ -2,13 +2,20 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UsersModule } from './users/users.module';
-import { dataSourceOptions } from 'db/data-source';
+import { Employee } from './employee.entity';
+import { ContactInfo } from './contact-info.entity';
+import { Meeting } from './meeting.entity';
+import { Task } from './task.entity';
 
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions),
-     UsersModule],
+  imports: [TypeOrmModule.forRoot({
+    type:"sqlite",
+    database:"../db",
+    entities:['dist/**/*.entity.js'],
+    synchronize: true,
+    logging:true
+  }) , TypeOrmModule.forFeature([Employee , ContactInfo , Meeting , Task])],
   controllers: [AppController],
   providers: [AppService],
 })
