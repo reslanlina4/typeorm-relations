@@ -11,7 +11,7 @@ import { Task } from './task.entity';
 @Module({
   imports: [TypeOrmModule.forRoot({
     type:"sqlite",
-    database:"../db",
+    database:"db",
     entities:['dist/**/*.entity.js'],
     synchronize: true,
     logging:true

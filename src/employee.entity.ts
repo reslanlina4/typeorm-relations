@@ -18,7 +18,7 @@ export class Employee {
     @ManyToOne(() => Employee , employee => employee.directReports , {onDelete: 'SET NULL'})
     manager:Employee;
 
-    @OneToMany(() => Employee , employee => employee.manager)
+    @OneToMany(() => Employee , employee => employee.manager ,{onDelete:'SET NULL'})
     directReports: Employee[];
 
     @OneToOne(() => ContactInfo , contactInfo => contactInfo.employee)
